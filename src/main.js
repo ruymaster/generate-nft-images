@@ -3,6 +3,8 @@ const { NETWORK } = require(`${basePath}/constants/network.js`);
 const fs = require("fs");
 const sha1 = require(`${basePath}/node_modules/sha1`);
 const { createCanvas, loadImage } = require(`${basePath}/node_modules/canvas`);
+require('dotenv').config();
+
 const buildDir = `${basePath}/build`;
 const layersDir = `${basePath}/layers`;
 const {
@@ -133,7 +135,7 @@ const addMetadata = (_dna, _edition) => {
   let tempMetadata = {
     name: `${namePrefix} #${_edition}`,
     description: description,
-    image: `${baseUri}/${_edition}.png`,
+    image: process.env.MODE=='LOCAL'?``:`${baseUri}/${_edition}.png`,
     dna: sha1(_dna),
     edition: _edition,
     date: dateTime,

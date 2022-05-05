@@ -1,13 +1,14 @@
 const basePath = process.cwd();
 const { MODE } = require(`${basePath}/constants/blend_mode.js`);
 const { NETWORK } = require(`${basePath}/constants/network.js`);
-
-const network = NETWORK.eth;
+require('dotenv').config();
+const layersOrder = require(`${basePath}/layers/layers_order.json`);
+const network = NETWORK.sol;
 
 // General metadata for Ethereum
-const namePrefix = "Your Collection";
-const description = "Remember to replace this description";
-const baseUri = "ipfs://NewUriToReplace";
+const namePrefix = process.env.COLLECTION_NAME;
+const description = process.env.COLLECTION_DESC;
+const baseUri = process.env.BASE_URI;
 
 const solanaMetadata = {
   symbol: "YC",
@@ -24,16 +25,8 @@ const solanaMetadata = {
 // If you have selected Solana then the collection starts from 0 automatically
 const layerConfigurations = [
   {
-    growEditionSizeTo: 5,
-    layersOrder: [
-      { name: "Background" },
-      { name: "Eyeball" },
-      { name: "Eye color" },
-      { name: "Iris" },
-      { name: "Shine" },
-      { name: "Bottom lid" },
-      { name: "Top lid" },
-    ],
+    growEditionSizeTo: process.env.NFT_COUNT || 200,
+    layersOrder,
   },
 ];
 
