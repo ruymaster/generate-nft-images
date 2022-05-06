@@ -154,6 +154,7 @@ const addMetadata = (_dna, _edition) => {
       image: `${_edition}.png`,
       //Added metadata for solana
       external_url: solanaMetadata.external_url,
+      dna: sha1(_dna),
       edition: _edition,
       ...extraMetadata,
       attributes: tempMetadata.attributes,
