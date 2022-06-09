@@ -1,6 +1,6 @@
 # Logs
 layers_order.json
-
+.DS_Store
 logs
 _.log
 npm-debug.log_
