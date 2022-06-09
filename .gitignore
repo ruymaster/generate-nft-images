@@ -1,4 +1,5 @@
 # Logs
+layers/
 layers_order.json
 .DS_Store
 logs
